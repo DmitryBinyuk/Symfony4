@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# the "app_random_number" test route
+app_lucky_number:
+  path: /random/number
+  controller: App\Controller\DefaultController::number
