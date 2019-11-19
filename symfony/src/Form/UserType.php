@@ -15,24 +15,6 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            // ->add('roles')
-            // ->addModelTransformer(new CallbackTransformer(
-            //     function ($user) {
-            //         // var_dump($user->getRoles());die;
-            //         // transform the array to a string
-            //         return implode(', ', $user->getRoles());
-            //     },
-            //     function ($tagsAsString) {
-            //         // transform the string back to an array
-            //         return explode(', ', $user->getRoles());
-            //     }
-            // ))
-            // ->add('roles', ChoiceType::class, [
-            //     'choices'  => [
-            //         'Admin' => 'ROLE_ADMIN',
-            //         'User' => 'ROLE_USER',
-            //     ],
-            // ])
             ->add('password')
         ;
     }

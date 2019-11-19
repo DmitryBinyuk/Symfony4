@@ -1,4 +1,5 @@
-docker-symfony
+
+Trainee project
 ==============
 
 This is a complete stack for running Symfony 4 (latest version: Flex) 
