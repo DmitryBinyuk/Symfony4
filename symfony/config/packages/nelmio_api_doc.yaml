@@ -1,0 +1,21 @@
+nelmio_api_doc:
+    areas:
+        path_patterns: # an array of regexps
+            - ^/api(?!/doc$)
+        host_patterns:
+            - ^api\.
+    documentation:
+        host: http://symfony.localhost
+        schemes: [http]
+        info:
+            title: API DOC
+            description: API documentation
+            version: 1.0.0
+        # securityDefinitions:
+        #     Bearer:
+        #         type: apiKey
+        #         description: 'Value: Bearer {jwt}'
+        #         name: Authorization
+        #         in: header
+        # security:
+        #     - Bearer: []      
