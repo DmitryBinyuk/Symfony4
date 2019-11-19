@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Category;
+// use Nelmio\ApiDocBundle\Annotation\Model;
+// use Swagger\Annotations as SWG;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -13,6 +16,7 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @var int
      */
     private $id;
 
@@ -30,6 +34,12 @@ class Product
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -70,5 +80,29 @@ class Product
         $this->description = $description;
 
         return $this;
+    }
+
+    /**
+     * Set category.
+     *
+     * @param Category|null $category
+     *
+     * @return Product
+     */
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category.
+     *
+     * @return App\Entity\Category|null
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

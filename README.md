@@ -27,3 +27,30 @@ _Note :_ you can rebuild all Docker images by running:
 ```bash
 $ docker-compose build
 ```
+
+docker exec -it container_id /bin/sh
+
+Generate a blank migration class:
+php bin/console doctrine:migrations:generate
+
+Create migration for new entity:
+php bin/console doctrine:migrations:diff
+
+run the migration to add the table to your database:
+
+php bin/console doctrine:migrations:migrate
+
+Create User Class:
+php bin/console make:user
+
+Load fixtures by running: 
+php bin/console doctrine:fixtures:load
+
+If you prefer to add new properties manually, the make:entity command can generate the getter & setter methods for you:
+
+php bin/console make:entity --regenerate
+
+If you make some changes and want to regenerate all getter/setter methods, also pass --overwrite.
+
+Run tests:
+./bin/phpunit
