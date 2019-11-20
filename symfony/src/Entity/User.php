@@ -10,6 +10,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_USER  = 'ROLE_USER';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -114,5 +117,14 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function hasAPIAccess()
+    {
+        if (in_array(self::ROLE_USER, $this->getRoles())) {
+            return true;
+        }
+
+        return false;
     }
 }

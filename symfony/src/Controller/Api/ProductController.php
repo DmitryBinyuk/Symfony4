@@ -14,29 +14,31 @@ use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use App\EventListener\ProductInfoListener;
 use App\Service\DiscountService;
+use Psr\Log\LoggerInterface;
 
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/api/product", methods={"GET"})
+     * @Route("/api/products/{product}", methods={"GET"})
      *
      * @SWG\Get(
      *     path="/api/product",
-     *     tags={"Areas of Law"},
-     *     summary="get all areas of law",
-     *     description="get all areas of law",
-     *     produces={"application/json"},
-     *     consumes={"application/json"},
+     *     tags={"Product info"},
+     *     summary="get product info",
+     *     description="get product info",
      * )
      *
-     * @return JsonResponse
      */
     public function info(
         EventDispatcherInterface $dispatcher,
-        DiscountService $discountService
+        DiscountService $discountService,
+        LoggerInterface $logger,
+        Product $product
     )
     {
-        $product = new Product();
+        $logger->info('onProductInfo-controller');
+
+        $this->denyAccessUnlessGranted('view', $product);
 
         $listener = new ProductInfoListener();
         $dispatcher->addListener('product.info_listener', [$listener, 'onProductInfo']);
