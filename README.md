@@ -31,6 +31,8 @@ $ docker-compose build
 
 docker exec -it container_id /bin/sh
 
+php bin/console cache:clear
+
 Generate a blank migration class:
 php bin/console doctrine:migrations:generate
 
@@ -41,11 +43,11 @@ run the migration to add the table to your database:
 
 php bin/console doctrine:migrations:migrate
 
-Create User Class:
-php bin/console make:user
-
 Load fixtures by running: 
 php bin/console doctrine:fixtures:load
+
+Create User Class:
+php bin/console make:user
 
 If you prefer to add new properties manually, the make:entity command can generate the getter & setter methods for you:
 
